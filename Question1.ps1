@@ -1,10 +1,13 @@
 
-Import-Module ActiveDirectory
-$cutoffDate = (Get-Date).AddDays(-90)
-$staleUsers = Get-ADUser -Filter * -Properties PasswordLastSet, DisplayName |
+                
+$daysInactive = 90
+$cutoffDate = (Get-Date).AddDays(-$daysInactive)
+
+$staleUsers = Get-ADUser -Filter * -Properties DisplayName, PasswordLastSet |
     Where-Object { $_.PasswordLastSet -lt $cutoffDate } |
     Select-Object Name, SamAccountName, PasswordLastSet
-$staleUsers
+$reportPath = "C:\Reports\StaleUserPasswords.csv"
+$staleUsers | Export-Csv -Path $reportPath -NoTypeInformation
 
 
 #Describe how you would enhance it to automatically email a weekly report to the IT admin.
