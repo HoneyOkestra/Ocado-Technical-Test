@@ -7,7 +7,7 @@ $staleUsers = Get-ADUser -Filter * -Properties PasswordLastSet, DisplayName |
 $staleUsers
 
 
-Describe how you would enhance it to automatically email a weekly report to the IT admin.
+#Describe how you would enhance it to automatically email a weekly report to the IT admin.
 SendMailMessge cmdlet
 (obsolete)
 $sendMailMessageSplat = @{
