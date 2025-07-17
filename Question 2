@@ -44,3 +44,6 @@ if data:
     print(data)
 else:
     print("Failed to retrieve data.")
+
+
+Reference: https://www.claudiokuenzler.com/blog/1394/how-to-handle-json-decode-error-python-script-try-except
