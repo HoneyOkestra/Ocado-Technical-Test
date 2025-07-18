@@ -34,3 +34,13 @@ if ($movedUsers.Count -gt 0) {
 } else {
     Write-Host "No accounts met the criteria this month."
 }
+
+
+#Automate with an Azure Service
+#Create an Azure Automation Account, authenticate with credentials
+#Next, configure a Hybrid Runbook Worker on a server that is joined to the domain.
+#Install the agent and link it to the Automation account 
+#Then, import your PowerShell script as a Runbook, publish it, and assign it to run on the Hybrid Runbook Worker. 
+#Create a schedule, such as monthly, to automate the Runbook execution.
+
+
