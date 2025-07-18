@@ -11,21 +11,29 @@ $staleUsers | Export-Csv -Path $reportPath -NoTypeInformation
 
 
 #Describe how you would enhance it to automatically email a weekly report to the IT admin.
-SendMailMessge cmdlet
-(obsolete)
-$sendMailMessageSplat = @{
-    From = 'User01 <user01@fabrikam.com>'
-    To = 'User02 <user02@fabrikam.com>', 'User03 <user03@fabrikam.com>'
-    Subject = 'Sending the Attachment'
-    Body = "Forgot to send the attachment. Sending now."
-    Attachments = '.\data.csv'
-    Priority = 'High'
-    DeliveryNotificationOption = 'OnSuccess', 'OnFailure'
-    SmtpServer = 'smtp.fabrikam.com'
-}
-Send-MailMessage @sendMailMessageSplat
+A weekly Task scheduler can be created to run the PS script. The account that runs the task will be a service account
+A Send-MailMessge cmdlet will be added to the script and below is the syntax that may be added
+Send-MailMessage
+    [[-Body] <String>]
+    [[-SmtpServer] <String>]
+    [[-Subject] <String>]
+    [-To] <String[]>
+    -From <String>
+    [-Attachments <String[]>]
+    [-Bcc <String[]>]
+    [-BodyAsHtml]
+    [-Encoding <Encoding>]
+    [-Cc <String[]>]
+    [-DeliveryNotificationOption <DeliveryNotificationOptions>]
+    [-Priority <MailPriority>]
+    [-ReplyTo <String[]>]
+    [-Credential <PSCredential>]
+    [-UseSsl]
+    [-Port <Int32>]
+    [<CommonParameters>]
 
-References: 
-https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/send-mailmessage?view=powershell-7.5
-https://o365info.com/send-mgusermail/
+
+ 
+
+
 
